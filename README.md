@@ -1,21 +1,28 @@
-# rapp-copilot-in-chrome
+# rapp-copilot-in-edge
 
-**Drive your real, logged-in Edge/Chrome from GitHub Copilot CLI.**
+**Drive your real, logged-in Microsoft Edge from GitHub Copilot CLI.**
 
 Not a headless throwaway browser — *your* browser, with your profile, your cookies, and your
 authenticated sessions. Navigate, click, type, screenshot, read the accessibility tree, run
-JavaScript, and inspect console and network traffic, all from Copilot CLI.
+JavaScript, and inspect console and network traffic, all from Copilot CLI. The
+same Chromium extension remains compatible with Chrome.
+
+> **Lineage:** this is the Edge-first documentation strain of
+> [`kody-w/rapp-copilot-in-chrome`](https://github.com/kody-w/rapp-copilot-in-chrome).
+> Its initial code history is the exact merged upstream Voice Twin release
+> (`d49e377a`); only Edge-first documentation is changed here. Security fixes
+> should land upstream first, then flow into this strain.
 
 Recommended — local extension, local stdio MCP, no vendor account:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-copilot-in-chrome/main/install-local.sh | sh
+curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-copilot-in-edge/main/install-local.sh | sh
 ```
 
 The reverse-engineered Claude bridge remains available as a compatibility backend:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-copilot-in-chrome/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-copilot-in-edge/main/install.sh | sh
 ```
 
 ---
@@ -42,7 +49,7 @@ Claude binary, and claude.ai login in one move: nothing needs to spawn a native 
 | Vendor account | none | matching claude.ai login |
 | Native messaging manifest | none | required |
 | Python packages | none (stdlib) | none |
-| Browser | Edge or Chrome | Claude extension's supported browsers |
+| Browser | Microsoft Edge first; Chrome compatible | Claude extension's supported browsers |
 
 ### Install
 
@@ -50,7 +57,7 @@ The installer copies a portable runtime and extension to `~/.rappter-chrome`, ge
 machine-local token, registers `rappter-chrome-local` in Copilot's MCP config, and opens the
 extensions page.
 
-1. Open `edge://extensions/` or `chrome://extensions/`, then enable
+1. Open `edge://extensions/` (or `chrome://extensions/` for compatibility), then enable
    **Developer mode**.
 2. Choose **Load unpacked** and select `~/.rappter-chrome/extension`.
 3. Open the extension popup, paste the token printed by the installer, and
